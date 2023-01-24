@@ -1,0 +1,17 @@
+{
+    "name": "jalpeshtxtech/users",
+    "description": "This is users module.",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Jalpeshtxtech\\Users\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Tx Labs",
+            "email": "jalpesh.patel@txtech.co"
+        }
+    ],
+    "require": {}
+}
