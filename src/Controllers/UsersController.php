@@ -36,14 +36,20 @@ class UsersController extends Controller
         return view('users::add', compact('data'));
     }
 
-    public function update(UsersRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        // echo "<pre>".$id;print_r($request->all());die;
+        $this->validate($request, [
+            'name' => 'required|alpha|max:255',
+            'phone' => 'required|numeric',
+            'status' => 'required'
+        ]);
+        
         $user = Users::findOrFail($id);
-
-        // $user->category_name = $request->category_name;
-        // $user->description = $request->description;
-
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->alt_email = $request->alt_email;
+        $user->phone = $request->phone;
+        $user->status = $request->status;
         $user->save();
         // $user = Category::create($request->all());
         return redirect()->route('users.list')->with('success','User Updated Successfully!');

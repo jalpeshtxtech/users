@@ -9,13 +9,45 @@ use Illuminate\Notifications\Notifiable;
 class Users extends Model
 {
     use Notifiable;
-    // use ColumnFillable;
+    
+    protected $table = 'users';
 
     protected $fillable = [
-        'category_name',
-        'description'
+        'name',
+        'email',
+        'password',
+        'alt_email',
+        'phone',
+        'status',
+        'profile_image'
+    ];
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
     ];
 
-    protected $guarded = [];
-    protected $table = 'users';
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+    /**
+     * Always encrypt password when it is updated.
+     *
+     * @param $value
+     * @return string
+     */
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
 }
