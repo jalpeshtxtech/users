@@ -27,7 +27,7 @@
         @endif
 
         <form action="{{ ((isset($data->id)) && ($data->id != "")) ? route('users.update',$data->id) : route('users.store') }}" method="post">
-            {{-- {{ ((isset($data->id)) && ($data->id != "")) ? method_field('PUT') :  method_field('POST') }} --}}
+            {{ ((isset($data->id)) && ($data->id != "")) ? method_field('PUT') :  method_field('POST') }}
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="row">
                 <div class="col-md-4">
