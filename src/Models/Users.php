@@ -19,7 +19,7 @@ class Users extends Model
         'alt_email',
         'phone',
         'status',
-        'profile_image'
+        'profile_image' 
     ];
     /**
      * The attributes that should be hidden for serialization.
