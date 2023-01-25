@@ -15,7 +15,6 @@ class UsersController extends Controller
     {
         $data = Users::all();
         // $data = array('category1','category2','category3','category4','category5');
-
         return view('users::index', compact('data'));
     }
 
